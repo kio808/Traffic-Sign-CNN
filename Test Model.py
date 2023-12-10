@@ -6,7 +6,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 
-#Used only to get the labels of the cats
+#Used only to get the labels
 data_dir = ('Train 70:30 split')
 dataset = keras.utils.image_dataset_from_directory('Train 70:30 split', batch_size = 15, image_size=(32,32), shuffle=True,)
 labels = dataset.class_names
@@ -15,7 +15,8 @@ labels = dataset.class_names
 reload_model = load_model(os.path.join('models',  "3 layer COnv2D 8 sign model SGD padding.keras"))
 
 #testing model
-#In order to add your own image, add the image in the folder "add cat images here", and type in the image name and format
+#In order to add your own image, add the image in the folder "add image", and type in the image name and format
+#ONLY CLASSIFIES ACCESS DENIED, CLOSED ROAD, LEFT AND RIGHT SIGN, ROUNDABOUT, STOP, UNEVEN, AND YIELD SIGNS
 testimg = cv2.imread(os.path.join("add image", "stop3.jpeg"))
 resize = tf.image.resize(testimg, (32,32))
 plt.imshow(cv2.cvtColor(testimg, cv2.COLOR_BGR2RGB))
